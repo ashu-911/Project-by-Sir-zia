@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project by Sir Zia: Research on ChatGPT 4.0</title>
+  <style>
+    /* === Global Styling === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
+      padding: 50px 0;
+    }
+
+    /* === Futuristic background lines === */
+    body::before, body::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.02) 0px,
+        rgba(255, 255, 255, 0.02) 1px,
+        transparent 2px,
+        transparent 100px
+      );
+      animation: moveLines 15s linear infinite;
+      top: 0;
+      left: 0;
+    }
+
+    @keyframes moveLines {
+      from { background-position: 0 0; }
+      to { background-position: 100px 0; }
+    }
+
+    /* === Title === */
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      color: #00eaff;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-shadow: 0 0 15px #00eaff, 0 0 25px #00eaff;
+      animation: glowPulse 2.5s ease-in-out infinite alternate;
+      z-index: 2;
+    }
+
+    @keyframes glowPulse {
+      from { text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff; }
+      to { text-shadow: 0 0 25px #00eaff, 0 0 40px #00eaff; }
+    }
+
+    /* === Timer === */
+    #timer {
+      margin-top: 15px;
+      font-size: 1.3rem;
+      color: #80ffea;
+      letter-spacing: 2px;
+      text-shadow: 0 0 15px #00eaff;
+      z-index: 2;
+      animation: fadeIn 1.5s ease;
+    }
+
+    /* === Info Box === */
+    .box {
+      margin-top: 40px;
+      width: 80%;
+      max-width: 700px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 25px rgba(0, 234, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeIn 1.5s ease;
+      z-index: 2;
+    }
+
+    .box:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 30px rgba(0, 234, 255, 0.3);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      color: #80ffea;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      text-align: justify;
+      color: #cce7f0;
+    }
+
+    /* === Submission Section === */
+    .submit-section {
+      margin-top: 50px;
+      width: 80%;
+      max-width: 700px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 25px rgba(0, 234, 255, 0.1);
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      z-index: 2;
+      animation: fadeIn 2s ease;
+    }
+
+    .submit-section h2 {
+      color: #80ffea;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    input, textarea {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      padding: 10px 15px;
+      color: #e0e0e0;
+      font-size: 1rem;
+      outline: none;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    input[type="file"] {
+      border: none;
+      color: #80ffea;
+    }
+
+    input:focus, textarea:focus {
+      box-shadow: 0 0 15px rgba(0, 234, 255, 0.3);
+      border-color: #00eaff;
+    }
+
+    button {
+      background: #00eaff;
+      color: #000;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    button:hover {
+      background: #00a3cc;
+      box-shadow: 0 0 20px #00eaff, 0 0 40px #00eaff;
+      color: #fff;
+    }
+
+    footer {
+      margin-top: 50px;
+      color: #aaa;
+      font-size: 0.9rem;
+      text-align: center;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Project by Sir Zia: Research on ChatGPT 4.0</h1>
+  <div id="timer">Loading timer...</div>
+
+  <div class="box">
+    <h2>Abstract</h2>
+    <p>
+      This research explores the advancements and capabilities of ChatGPT 4.0, an AI language model
+      developed by OpenAI. ChatGPT 4.0 demonstrates remarkable improvements in contextual understanding,
+      response generation, and reasoning compared to its predecessors. The study focuses on its
+      architecture, fine-tuning methods, safety alignment, and its applications across education,
+      research, and software development. Through this project, we analyze the model’s ability to
+      simulate human-like conversations, generate code, and provide context-aware assistance,
+      showcasing the growing impact of generative AI in modern technology.
+    </p>
+  </div>
+
+  <div class="submit-section">
+    <h2>Submit Your Project</h2>
+    <form id="projectForm">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <input type="file" required>
+      <button type="submit">Submit Project</button>
+    </form>
+  </div>
+
+  <footer>
+    © 2025 Project by Sir Zia — All Rights Reserved
+  </footer>
+
+  <script>
+    // === Countdown Timer ===
+    const timerDisplay = document.getElementById("timer");
+    const endTime = new Date().getTime() + 7 * 60 * 60 * 1000;
+
+    const countdown = setInterval(() => {
+      const now = new Date().getTime();
+      const remaining = endTime - now;
+
+      if (remaining <= 0) {
+        clearInterval(countdown);
+        timerDisplay.textContent = "Time's up!";
+        timerDisplay.style.color = "#ff4d4d";
+        timerDisplay.style.textShadow = "0 0 20px #ff4d4d";
+        return;
+      }
+
+      const hours = Math.floor((remaining / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((remaining / (1000 * 60)) % 60);
+      const seconds = Math.floor((remaining / 1000) % 60);
+
+      timerDisplay.textContent = `${hours}h ${minutes}m ${seconds}s remaining`;
+    }, 1000);
+
+    // === Fake Submit Alert ===
+    const form = document.getElementById("projectForm");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      alert("✅ Project submitted successfully!");
+      form.reset();
+    });
+  </script>
+</body>
+</html>
